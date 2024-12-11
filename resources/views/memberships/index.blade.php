@@ -30,6 +30,7 @@
                 <table class="table table-bordered m-0" id="member">
                     <thead>
                         <tr>
+                            <th>Ref No</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Services</th>
@@ -42,6 +43,7 @@
                     <tbody>
                         @foreach ($memberships as $membership)
                             <tr>
+                                <td>{{ $membership->ref_no }}</td>
                                 <td>{{ $membership->member_name }}</td>
                                 <td>{{ $membership->phone }}</td>
                                 <td class="services">

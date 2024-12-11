@@ -13,6 +13,10 @@ EDIT MEMBERSHIP
             @method('PUT')
             <div class="row">
                 <div class="col-md-6 mb-3">
+                    <label for="ref_no" class="form-label">Ref No</label>
+                    <input type="text" name="ref_no" class="form-control" value="{{ old('ref_no', $membership->ref_no) }}" required>
+                </div>
+                <div class="col-md-6 mb-3">
                     <label for="member_name" class="form-label">Member Name</label>
                     <input type="text" name="member_name" class="form-control" value="{{ old('member_name', $membership->member_name) }}" required>
                 </div>

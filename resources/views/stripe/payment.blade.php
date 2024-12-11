@@ -35,12 +35,27 @@
                             <label for="card-holder-name">Name on Card</label>
                             <input id="card-holder-name" class="form-control" type="text" placeholder="Card Holder Name" required>
                         </div>
+
                         <div class="form-group">
-                            <label for="card-element">Card Details</label>
-                            <div id="card-element" class="form-control"></div>
+                            <label for="card-element">Card Number</label>
+                            <div id="card-element">
+                                <!-- Stripe Card Element will be mounted here -->
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="expiration-date">Expiration Date (MM/YY)</label>
+                            <input type="text" id="expiration-date" class="form-control" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" class="form-control" placeholder="CVV" maxlength="4" required>
+                        </div>
+
                         <div id="card-errors" role="alert" class="text-danger"></div>
-                        <button id="card-button" class="btn btn-primary btn-lg btn-block" type="button" data-secret="{{ $clientSecret }}">
+
+                        <button id="card-button" class="btn btn-primary btn-lg btn-block" type="submit" data-secret="{{ $clientSecret }}">
                             Pay Now ($100)
                         </button>
                     </form>
@@ -54,12 +69,12 @@
     const stripe = Stripe('{{ env("STRIPE_KEY") }}');
     const elements = stripe.elements();
     const cardElement = elements.create('card');
-    cardElement.mount('#card-element');
+    cardElement.mount('#card-element');  // Mount Stripe Card Element
 
     const form = document.getElementById('payment-form');
     const cardHolderName = document.getElementById('card-holder-name');
     const cardButton = document.getElementById('card-button');
-    const clientSecret = cardButton.dataset.secret;
+    const clientSecret = cardButton.dataset.secret;  // Retrieve the clientSecret passed from the backend
 
     cardButton.addEventListener('click', async (e) => {
         e.preventDefault();

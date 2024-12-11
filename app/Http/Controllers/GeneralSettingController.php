@@ -6,6 +6,7 @@ use App\Models\PoImportantNote;
 use App\Models\SpecBreak;
 use App\Models\InitailNo;
 use App\Models\PrApproval;
+use App\Models\Membership;
 use App\Models\Designation;
 use App\Models\PayrollSetup;
 use Illuminate\Http\Request;

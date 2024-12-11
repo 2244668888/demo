@@ -45,11 +45,30 @@ public function paymentSuccess()
 }
 
     
-    public function create()
-    {
-        $services = Service::all();
-        return view('memberships.create', compact('services'));
-    }
+
+
+public function create()
+{
+    $currentYear = date('Y');
+    $currentMonth = date('m');
+
+    $lastRecord = Membership::whereYear('created_at', $currentYear)
+                            ->whereMonth('created_at', $currentMonth)
+                            ->orderBy('created_at', 'desc')
+                            ->first();
+
+    $lastRefNo = $lastRecord ? $lastRecord->ref_no : null;
+    $lastNumber = $lastRefNo ? (int) substr($lastRefNo, -1) : 0;  
+
+    $nextNumber = $lastNumber + 1;
+
+    $refNo = "PP/{$currentYear}/{$currentMonth}/{$nextNumber}";
+
+    $services = Service::all();
+
+    return view('memberships.create', compact('refNo', 'services'));
+}
+
 
     public function store(Request $request)
     {
@@ -59,6 +78,14 @@ public function paymentSuccess()
             'issue_date' => 'required|date',
             'expiry_date' => 'required|date',
         ]);
+    
+        $year = now()->year;  
+        $month = now()->month;  
+        $lastMembership = Membership::latest('id')->first();  
+        $sequence = $lastMembership ? (intval(substr($lastMembership->ref_no, -1)) + 1) : 1; 
+    
+        $ref_no = "PP/{$year}/" . str_pad($month, 2, '0', STR_PAD_LEFT) . "/{$sequence}";
+        $validated['ref_no'] = $ref_no;
     
         $membership = Membership::create($validated);
     
@@ -76,6 +103,7 @@ public function paymentSuccess()
     
         return redirect()->route('memberships.index')->with('success', 'Membership created successfully!');
     }
+    
 
     private function getPriceFromDropdown($serviceId)
     {
@@ -113,25 +141,25 @@ public function paymentSuccess()
             'issue_date' => 'required|date',
             'expiry_date' => 'required|date',
         ]);
-    
+        
         $membership = Membership::findOrFail($id);
-    
-        $allServices = Service::all();  
-    
+        
+        unset($validated['ref_no']);
+        
         $membership->update($validated);
-    
+        
         $membership->services()->detach();
     
         $services = array_merge(
             $request->input('dropdown_services', []), 
-            $request->input('added_services', [])      
+            $request->input('added_services', [])
         );
     
-        $prices = $request->input('added_prices', []); 
-    
+        $prices = $request->input('added_prices', []);
+        
         foreach ($services as $serviceId) {
             $price = isset($prices[$serviceId]) ? $prices[$serviceId] : $this->getPriceFromDropdown($serviceId);
-    
+            
             $membership->services()->attach($serviceId, ['price' => $price]);
         }
     

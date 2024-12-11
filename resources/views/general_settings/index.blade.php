@@ -239,6 +239,9 @@
                                                                                     name="initial[{{ $loop->iteration }}][screen]"
                                                                                     class="form-control w-100 screen"
                                                                                     onchange="updateSample(this); updateDropdownOptions();">
+                                                                                    <option value="Membership"
+                                                                                        @selected($initialRef->screen == 'Membership')>Membership
+                                                                                    </option>
                                                                                     <option value="Quotation"
                                                                                         @selected($initialRef->screen == 'Quotation')>Quotation
                                                                                     </option>
@@ -815,10 +818,15 @@
                 ]
             });
 
-            options = [{
+            options = [
+                {
+                    value: 'Membership',
+                    text: 'Membership'
+                },{
                     value: 'Quotation',
                     text: 'Quotation'
                 },
+                
                 {
                     value: 'Delivery Order',
                     text: 'Delivery Order'
