@@ -5,10 +5,10 @@
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZENIG AUTO</title>
+    <title>Demo</title>
 
     <!-- Meta -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/zenig.png') }}" />
+    <!-- <link rel="shortcut icon" href="{{ asset('assets/images/zenig.png') }}" /> -->
 
  <!-- Add Toaster CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -207,22 +207,12 @@
                     <ul class="sidebar-menu">
                         <li class="menu-label"><a href="">ERP</a></li>
                         </li>
-                        <li class="treeview database-bar">
-                        <a href="#!">
+                        <li>
+                        <a href="{{route ('memberships.index')}}">
     <i class="bi bi-people"></i>
     <span class="menu-text">Membership</span>
 </a>
-<ul class="treeview-menu">
-                                <li>
-                                    <a href="{{route ('memberships.create')}}">Create Membership</a>
-                                </li>
-                                <li>
-                                    <a href="{{route ('memberships.index')}}">View Membership</a>
-                                </li>
-                                <!-- <li>
-                                    <a href="{{ route('invoice.index') }}">Invoice</a>
-                                </li> -->
-</ul>
+
                         </li>
                         <!-- <li class="treeview pvd-bar">
                             <a href="#!">
@@ -493,13 +483,13 @@
                                 </li> -->
                             </ul>
                         </li>
-<!-- 
+
                         <li class="general-bar">
                             <a href="{{ route('general_setting.index', 0) }}">
                                 <i class="bi bi-gear"></i>
                                 <span class="menu-text">General Settings</span>
                             </a>
-                        </li> -->
+                        </li>
                         <li class="menu-label"><a href="">ACCOUNTING</a></li>
                         <li class="account-dashboard">
                             <a href="{{ route('account-home') }}">

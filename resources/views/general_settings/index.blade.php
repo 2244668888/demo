@@ -43,15 +43,15 @@
                                     }
                                 }
                             @endphp
-                            @can('General Settings SST Percentage')
+                            <!-- @can('General Settings SST Percentage')
                                 <li class="nav-item @if ($activeTab === 'oneB') active @endif" role="presentation">
                                     <a class="nav-link @if ($activeTab === 'oneB') active @endif" id="tab-oneB"
                                         data-bs-toggle="tab" href="#oneB" role="tab" aria-controls="oneB"
                                         aria-selected="true"><i class="bi bi-percent me-2"></i> SST
                                         Percentage</a>
                                 </li>
-                            @endcan
-                            @can('General Settings PO Important Note')
+                            @endcan -->
+                            <!-- @can('General Settings PO Important Note')
                                 <li class="nav-item @if ($activeTab === 'oneA') active @endif" role="presentation">
                                     <a class="nav-link @if ($activeTab === 'oneA') active @endif" id="tab-oneA"
                                         data-bs-toggle="tab" href="#oneA" role="tab" aria-controls="oneA"
@@ -65,7 +65,7 @@
                                         data-bs-toggle="tab" href="#fourA" role="tab" aria-controls="fourA"
                                         aria-selected="false"><i class="bi bi-exclamation-triangle me-2"></i>Spec Break</a>
                                 </li>
-                            @endcan
+                            @endcan -->
                             @can('General Settings Initial Ref No')
                                 <li class="nav-item @if ($activeTab === 'fourB') active @endif" role="presentation">
                                     <a class="nav-link @if ($activeTab === 'fourB') active @endif" id="tab-fourB"
@@ -73,14 +73,14 @@
                                         aria-selected="false"><i class="bi bi-file-earmark-code me-2"></i>Initial Ref No</a>
                                 </li>
                             @endcan
-                            @can('General Settings PR Approval')
+                            <!-- @can('General Settings PR Approval')
                                 <li class="nav-item @if ($activeTab === 'fourC') active @endif" role="presentation">
                                     <a class="nav-link @if ($activeTab === 'fourC') active @endif" id="tab-fourC"
                                         data-bs-toggle="tab" href="#fourC" role="tab" aria-controls="fourC"
                                         aria-selected="false"><i class="bi bi-check-circle me-2"></i>PR
                                         Approval</a>
                                 </li>
-                            @endcan
+                            @endcan -->
                             @can('General Settings Payroll Setup')
                                 <li class="nav-item @if ($activeTab === 'fourD') active @endif" role="presentation">
                                     <a class="nav-link @if ($activeTab === 'fourD') active @endif" id="tab-fourD"
