@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ZENIG AUTO</title>
+    <title>Demo</title>
 
     <!-- Meta -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/zenig.png') }}" />
+    <!-- <link rel="shortcut icon" href="{{ asset('assets/images/zenig.png') }}" /> -->
 
     <!-- *************
    ************ CSS Files *************
